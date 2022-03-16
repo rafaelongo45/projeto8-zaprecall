@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Righteous', cursive;
+    --background-color: rgba(251, 108, 107, 1);
+    --font-title-color: rgba(255,255,255,1);
+    --button-color: rgba(255,255,255,1);
+    --button-font-color: rgba(215, 9, 0, 1);
+}
+
+body{
+    background: var(--background-color);
+}
+
+.welcome-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header{
+    margin-top: 40%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.header img{
+    width: 40%;
+    margin-bottom: 5%;
+}
+
+.welcome-page h1{
+    font-size: 40px;
+    color: var(--font-title-color);
+}
+
+.welcome-page button{
+    width: 70%;
+    height: 8%;
+    background-color: var(--button-color);
+    border: 1px solid var(--button-font-color);
+    border-radius: 5px; 
+    margin-bottom: 40%;
+    font-size: 23px;
+    color: var(--button-font-color);
+    box-shadow: 8px 10px 4px rgba(0, 0, 0, 0.15);
+}
