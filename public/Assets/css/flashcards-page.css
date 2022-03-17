@@ -3,6 +3,10 @@
     --page-title-color: rgba(255,255,255,1);
     --card-color: rgba(255,255,255,1);
     --footer-color: rgba(255,255,255,1);
+    --selected-card-color: rgba(255, 255, 212, 1);
+    --forgot-button: rgba(255, 48, 48, 1);
+    --almost-forgot-button: rgba(255, 146, 46, 1);
+    --remembered-button: rgba(47, 190, 52, 1);
 }
 
 header{
@@ -54,6 +58,16 @@ main{
     align-items: center;
     font-size: 35px;
     font-weight: 700;
+    box-shadow: 10px 6px 4px rgba(0, 0, 0, 0.15);
+}
+
+.play-area .card .question{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 35px;
+    font-weight: 700;
 }
 
 ion-icon{
@@ -63,6 +77,62 @@ ion-icon{
 .play-area .card p{
     margin-left: 10px;
     font-size: 18px;
+}
+
+.play-area .selected-card{
+    height: 20vh;
+    display:block;
+    position:relative;
+    background-color: var(--selected-card-color);
+    margin-bottom: 3vh;
+}
+
+.play-area .selected-card p{
+    font-weight: 400;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.play-area .selected-card ion-icon{
+    font-size: 35px;
+    position:absolute;
+    bottom: 10px;
+    right:0;
+}
+
+.play-area .selected-card .buttons{
+    height: 100%;
+    position:absolute;
+    bottom: 5px;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.play-area .selected-card .buttons button{
+    height: 40%;
+    width: 26%;
+    bottom: 0;
+    border:none;
+    border-radius: 8px;
+    font-family: 'Recursive', sans-serif;
+    text-align: center;
+    color: var(--page-title-color);
+    font-size: 14px;
+}
+
+.forgot{
+    background-color: var(--forgot-button);
+}
+
+.almost-forgot{
+    background-color: var(--almost-forgot-button);
+}
+
+.remembered{
+    background-color: var(--remembered-button);
 }
 
 footer{
@@ -81,4 +151,8 @@ footer{
 footer p{
     font-family: 'Recursive', sans-serif;
     font-size: 18px;
+}
+
+.hidden{
+    display:none !important; 
 }
