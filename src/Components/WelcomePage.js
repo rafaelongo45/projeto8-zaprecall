@@ -2,7 +2,7 @@ import FlashcardsPage from "./FlashcardsPage";
 import React from 'react';
 
 
-function WelcomePage(props) {
+function WelcomePage({}) {
     const [visible, setVisible] = React.useState(true);
 
     if(visible === true){

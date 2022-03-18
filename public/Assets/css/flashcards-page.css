@@ -60,12 +60,17 @@ main{
     font-weight: 700;
     box-shadow: 10px 6px 4px rgba(0, 0, 0, 0.15);
 }
-
-.play-area .card .question{
-    width:100%;
+.play-area .card .front{
+    height: 100%;
+    width: 100%;
     display:flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.play-area .question{
+    display:flex;
+    justify-content: space-between;
     font-size: 35px;
     font-weight: 700;
 }
@@ -81,16 +86,26 @@ ion-icon{
 
 .play-area .selected-card{
     height: 20vh;
-    display:block;
+    display:flex;
     position:relative;
     background-color: var(--selected-card-color);
     margin-bottom: 3vh;
+    box-shadow: 10px 12px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    z-index: 0;
+}
+
+.play-area .selected-card:nth-child(n+2){
+    margin-top: 3vh;
 }
 
 .play-area .selected-card p{
+    font-family: 'Recursive', sans-serif;
+    font-size: 17px;
     font-weight: 400;
     margin-top: 20px;
     margin-left: 10px;
+    overflow-wrap: break-word;
 }
 
 .play-area .selected-card ion-icon{
@@ -98,10 +113,10 @@ ion-icon{
     position:absolute;
     bottom: 10px;
     right:0;
+    z-index: 2;
 }
 
 .play-area .selected-card .buttons{
-    height: 100%;
     position:absolute;
     bottom: 5px;
     right: 0;
@@ -109,10 +124,11 @@ ion-icon{
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
+    height: 35%;
 }
 
 .play-area .selected-card .buttons button{
-    height: 40%;
+    height: 100%;
     width: 26%;
     bottom: 0;
     border:none;
