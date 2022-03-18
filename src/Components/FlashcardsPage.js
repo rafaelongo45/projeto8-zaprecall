@@ -11,6 +11,12 @@ const jsxDeck = [
     { question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
 ]
 
+const buttons = [
+    { className: "forgot", text: "Não lembrei" },
+    { className: "almost-forgot", text: "Quase não lembrei" },
+    { className: "remembered", text: "Zap!" }
+]
+
 function FlashcardsPage() {
     return (
         <>
@@ -66,29 +72,53 @@ function RenderDeck() {
 
 function RenderCard({ index, question, answer }) {
     const [visible, setVisible] = React.useState(true);
-    const classCss = `${!visible ? "selected-" : ""}card`
     const [renderAnswer, setRenderAnswer] = React.useState(false);
+    const [iconName, setIconName] = React.useState('play-outline')
+    const [cssStyle, setCssStyle] = React.useState('');
+    const [iconCss, setIconCss] = React.useState('');
+    const classCss = `${!visible ? "selected-" : ""}card`
     const classQuestionCss = `${!renderAnswer ? "question" : "question hidden"}`
 
-    function RenderFrontBackCard() {
+    function showFront(text) {
+        setVisible(true);
+        setRenderAnswer(false);
+        if (text === "forgot") {
+            setIconName('close-circle');
+            setCssStyle('wrong');
+            setIconCss('wrong-icon');
+        } else if (text === "almost-forgot") {
+            setIconName('help-circle');
+            setCssStyle('almost');
+            setIconCss('almost-icon');
+        } else if (text === "remembered") {
+            setIconName('checkmark-circle');
+            setCssStyle('right');
+            setIconCss('right-icon');
+        }
+    }
+
+    function RenderFrontBackCard({ iconName, cssStyle, iconCss }) {
         return visible === true ? (
             <div className="front" onClick={() => { setVisible(false) }}>
-                <p className="">Pergunta {index + 1}</p>
-                <ion-icon name="play-outline" ></ion-icon>
-            </div>
+                <p className={cssStyle}>Pergunta {index + 1}</p>
+                <ion-icon class={iconCss} name={iconName} ></ion-icon>
+            </div >
         ) :
-            <div className={classQuestionCss}>
-                <p>{question}</p>
-                <ion-icon name="swap-horizontal-outline" onClick={() => { setRenderAnswer(true) }}></ion-icon>
-            </div>
+        <div className={classQuestionCss}>
+            <p>{question}</p>
+            <ion-icon name="swap-horizontal-outline" onClick={() => { setRenderAnswer(true) }}></ion-icon>
+        </div>
     }
 
     function RenderAnswer() {
+        const renderButton = buttons.map((button, index) => {
+            return <RenderButton key={index + button.text} index={index} className={button.className} text={button.text} showFront={() => { showFront(button.className) }} />
+        })
         return renderAnswer === true ? (
             <section>
                 <p>{answer}</p>
                 <section className="buttons">
-                    <RenderButtons />
+                    {renderButton}
                 </section>
             </section>
         ) :
@@ -97,24 +127,15 @@ function RenderCard({ index, question, answer }) {
 
     return (
         <section className={classCss} >
-            <RenderFrontBackCard />
+            <RenderFrontBackCard cssStyle = {cssStyle} iconName={iconName} iconCss = {iconCss} />
             <RenderAnswer />
         </section>
     )
 }
 
 
-function RenderButtons() {
-    const buttons = [
-        { className: "forgot", text: "Não lembrei" },
-        { className: "almost-forgot", text: "Quase não lembrei" },
-        { className: "remembered", text: "Zap!" }
-    ]
-
-    const renderButton = buttons.map((button, index) => {
-        return <button key={index} className={button.className}>{button.text}</button>
-    })
-    return renderButton;
+function RenderButton({ className, text, showFront }) {
+    return <button className={className} onClick={showFront}>{text}</button>
 }
 
 export default FlashcardsPage;
