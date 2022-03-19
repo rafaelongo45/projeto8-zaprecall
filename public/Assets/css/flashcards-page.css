@@ -200,16 +200,16 @@ footer h1{
 }
 
 footer p{
-    font-size: 18px;
+    font-size: 24px;
     width: 80%;
     text-align: center;
     margin: 6px;
 }
 
 footer div{
+    width:100%;
     font-size: 25px;
     margin: 8px 0;
-    width: 50%;
     text-align: center;
 }
 
