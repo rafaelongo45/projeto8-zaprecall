@@ -23,7 +23,7 @@ header{
 }
 
 header img{
-  width: 13%;
+  width: 50px;
 }
 
 header h1{
@@ -194,9 +194,11 @@ footer{
 }
 
 footer h1{
+    width: 100%;
     font-weight: 700;
     font-size: 22px;
     margin: 10px 0;
+    text-align: center;
 }
 
 footer p{
@@ -228,4 +230,20 @@ footer div .right-icon{
 
 .hidden{
     display:none !important; 
+}
+
+@media (min-width: 1000px){
+
+    header img{
+        width: 65px;
+    }
+      
+    header h1{
+        font-size: 45px;
+    }
+
+    .play-area{
+        width: 50%;
+    }
+    
 }

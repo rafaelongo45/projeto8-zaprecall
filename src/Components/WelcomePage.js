@@ -1,6 +1,8 @@
 import FlashcardsPage from "./FlashcardsPage";
 import React from 'react';
 
+import logo from "../img/logo.png"
+
 
 function WelcomePage() {
     const [visible, setVisible] = React.useState(true);
@@ -19,7 +21,7 @@ function RenderFirstPage({setVisible}) {
     return (
         <main className="welcome-page">
             <section className="header">
-                <img src="./Assets/img/logo.png" alt="Page logo"></img>
+                <img src={logo} alt="Page logo"></img>
                 <h1>ZapRecall</h1>
             </section>
 

@@ -2,6 +2,8 @@ import Header from './header/Header.js'
 import Footer from './footer/Footer.js'
 import Main from './main/Main.js'
 
+import logoPequeno from '../img/logo-pequeno.png'
+
 import React from "react"
 
 function FlashcardsPage() {
@@ -10,7 +12,7 @@ function FlashcardsPage() {
 
     return (
         <>
-            <Header text="ZapRecall" src="./Assets/img/logo-pequeno.png" />
+            <Header text="ZapRecall" src={logoPequeno} />
             <Main numAnsw={numAnsw} setNumAnsw={setNumAnsw} answIcon={answIcon} setAnswIcon={setAnswIcon} deck = {deck}/>
             <Footer numAnsw={numAnsw} answIcon={answIcon} deck = {deck}/>
         </>
