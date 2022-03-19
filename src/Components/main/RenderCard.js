@@ -8,13 +8,15 @@ function RenderCard({ index, question, answer, numAnsw, setNumAnsw, answIcon, se
     const [iconName, setIconName] = React.useState('play-outline')
     const [cssStyle, setCssStyle] = React.useState('');
     const [iconCss, setIconCss] = React.useState('');
+    const [canAnswer, setCanAnswer] = React.useState(true);
     const classCss = `${!visible ? "selected-" : ""}card`
     const classQuestionCss = `${!renderAnswer ? "question" : "question hidden"}`
 
     function showFront(text, n) {
         setVisible(true);
         setRenderAnswer(false);
-        setNumAnsw(n + 1)
+        setNumAnsw(n + 1);
+        setCanAnswer(false);
         if (text === "forgot") {
             answIcon = [...answIcon, <ion-icon key = {n}class='wrong-icon' name='close-circle' ></ion-icon>]
             setIconName('close-circle');
@@ -45,7 +47,7 @@ function RenderCard({ index, question, answer, numAnsw, setNumAnsw, answIcon, se
         ) :
             <div className={classQuestionCss}>
                 <p>{question}</p>
-                <ion-icon name="swap-horizontal-outline" onClick={() => { setRenderAnswer(true); }}></ion-icon>
+                <ion-icon name="swap-horizontal-outline" onClick={canAnswer === true ? () => { setRenderAnswer(true) } : () => { setRenderAnswer(false) }}></ion-icon>
             </div>
     }
 
