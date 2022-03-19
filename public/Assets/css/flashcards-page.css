@@ -7,7 +7,7 @@
     --forgot-button: rgba(255, 48, 48, 1);
     --almost-forgot-button: rgba(255, 146, 46, 1);
     --remembered-button: rgba(47, 190, 52, 1);
-}
+}   
 
 header{
     display:flex;
@@ -194,6 +194,28 @@ footer{
 footer p{
     font-family: 'Recursive', sans-serif;
     font-size: 18px;
+    width: 100%;
+    text-align: center;
+}
+
+footer div{
+    font-family: 'Recursive', sans-serif;
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+
+footer div .wrong-icon{
+    color: var(--forgot-button);
+}
+
+footer div .almost-icon{
+    color: var(--almost-forgot-button);
+}
+
+footer div .right-icon{
+    color: var(--remembered-button);
 }
 
 .hidden{

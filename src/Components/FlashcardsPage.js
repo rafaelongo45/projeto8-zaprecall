@@ -11,6 +11,13 @@ const jsxDeck = [
     { question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
 ]
 
+function comparador() {
+    return Math.random() - 0.5;
+}
+
+jsxDeck.sort(comparador);
+
+
 const buttons = [
     { className: "forgot", text: "Não lembrei" },
     { className: "almost-forgot", text: "Quase não lembrei" },
@@ -18,16 +25,19 @@ const buttons = [
 ]
 
 function FlashcardsPage() {
+    const [numAnsw, setNumAnsw] = React.useState(0);
+    const [answIcon, setAnswIcon] = React.useState('');
+
     return (
         <>
             <Header text="ZapRecall" src="./Assets/img/logo-pequeno.png" />
-            <Main />
-            <Footer />
+            <Main numAnsw = {numAnsw} setNumAnsw = {setNumAnsw} answIcon = {answIcon} setAnswIcon = {setAnswIcon}/>
+            <Footer numAnsw = {numAnsw} answIcon = {answIcon}/>
         </>
     )
 }
 
-function Header({ text, src }) {
+function Header({ text, src}) {
     return (
         <header>
             <img src={src} alt="logo"></img>
@@ -36,41 +46,38 @@ function Header({ text, src }) {
     )
 }
 
-function Main() {
+function Main({numAnsw, setNumAnsw, answIcon, setAnswIcon}) {
     return (
         <main>
             <article className="play-area">
-                <RenderDeck />
+                <RenderDeck numAnsw = {numAnsw} setNumAnsw = {setNumAnsw} answIcon = {answIcon} setAnswIcon = {setAnswIcon}/>
             </article>
         </main>
     )
 }
 
-function Footer() {
+function Footer({numAnsw, answIcon}) {
     return (
         <footer>
-            <p> 0/4 CONCLUÍDOS</p>
+            <p> {numAnsw}/{jsxDeck.length} CONCLUÍDOS</p>
+            <div>
+                {answIcon}
+            </div>
         </footer>
     )
 }
 
-function RenderDeck() {
-    function comparador() {
-        return Math.random() - 0.5;
-    }
-
-    jsxDeck.sort(comparador);
-
+function RenderDeck({numAnsw, setNumAnsw, answIcon, setAnswIcon}) {
     const renderCard = jsxDeck.map((card, index) => {
         return (
-            <RenderCard key={card.question + index} index={index} question={card.question} answer={card.answer} />
+            <RenderCard key={card.question + index} index={index} question={card.question} answer={card.answer} numAnsw = {numAnsw} setNumAnsw = {setNumAnsw} answIcon = {answIcon} setAnswIcon = {setAnswIcon}/>
         )
     })
 
     return renderCard;
 }
 
-function RenderCard({ index, question, answer }) {
+function RenderCard({ index, question, answer, numAnsw, setNumAnsw, answIcon, setAnswIcon }) {
     const [visible, setVisible] = React.useState(true);
     const [renderAnswer, setRenderAnswer] = React.useState(false);
     const [iconName, setIconName] = React.useState('play-outline')
@@ -79,21 +86,28 @@ function RenderCard({ index, question, answer }) {
     const classCss = `${!visible ? "selected-" : ""}card`
     const classQuestionCss = `${!renderAnswer ? "question" : "question hidden"}`
 
-    function showFront(text) {
+    function showFront(text, n) {
         setVisible(true);
         setRenderAnswer(false);
+        setNumAnsw(n+1)
         if (text === "forgot") {
+            answIcon = [...answIcon,  <ion-icon class = 'wrong-icon' name='close-circle' ></ion-icon>]
             setIconName('close-circle');
             setCssStyle('wrong');
             setIconCss('wrong-icon');
+            setAnswIcon(answIcon);
         } else if (text === "almost-forgot") {
+            answIcon = [...answIcon, <ion-icon class = 'almost-icon' name='help-circle' ></ion-icon>]
             setIconName('help-circle');
             setCssStyle('almost');
             setIconCss('almost-icon');
+            setAnswIcon(answIcon);
         } else if (text === "remembered") {
+            answIcon = [...answIcon, <ion-icon class = 'right-icon' name='checkmark-circle' ></ion-icon>]
             setIconName('checkmark-circle');
             setCssStyle('right');
             setIconCss('right-icon');
+            setAnswIcon(answIcon);
         }
     }
 
@@ -112,7 +126,7 @@ function RenderCard({ index, question, answer }) {
 
     function RenderAnswer() {
         const renderButton = buttons.map((button, index) => {
-            return <RenderButton key={index + button.text} index={index} className={button.className} text={button.text} showFront={() => { showFront(button.className) }} />
+            return <RenderButton key={index + button.text} index={index} className={button.className} text={button.text} showFront={() => { showFront(button.className, numAnsw) }} />
         })
         return renderAnswer === true ? (
             <section>
