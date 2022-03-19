@@ -31,13 +31,13 @@ function FlashcardsPage() {
     return (
         <>
             <Header text="ZapRecall" src="./Assets/img/logo-pequeno.png" />
-            <Main numAnsw = {numAnsw} setNumAnsw = {setNumAnsw} answIcon = {answIcon} setAnswIcon = {setAnswIcon}/>
-            <Footer numAnsw = {numAnsw} answIcon = {answIcon}/>
+            <Main numAnsw={numAnsw} setNumAnsw={setNumAnsw} answIcon={answIcon} setAnswIcon={setAnswIcon} />
+            <Footer numAnsw={numAnsw} answIcon={answIcon} />
         </>
     )
 }
 
-function Header({ text, src}) {
+function Header({ text, src }) {
     return (
         <header>
             <img src={src} alt="logo"></img>
@@ -46,20 +46,45 @@ function Header({ text, src}) {
     )
 }
 
-function Main({numAnsw, setNumAnsw, answIcon, setAnswIcon}) {
+function Main({ numAnsw, setNumAnsw, answIcon, setAnswIcon }) {
     return (
         <main>
             <article className="play-area">
-                <RenderDeck numAnsw = {numAnsw} setNumAnsw = {setNumAnsw} answIcon = {answIcon} setAnswIcon = {setAnswIcon}/>
+                <RenderDeck numAnsw={numAnsw} setNumAnsw={setNumAnsw} answIcon={answIcon} setAnswIcon={setAnswIcon} />
             </article>
         </main>
     )
 }
 
-function Footer({numAnsw, answIcon}) {
+function Footer({ numAnsw, answIcon }) {
+    console.log(answIcon)
+    function CheckSuccess() {
+        let success = true;
+        for (let i = 0; i < answIcon.length; i++) {
+            if (answIcon[i].props.class === 'wrong-icon') {
+                success = false;
+            }
+        }
+
+        if (success === false) {
+            return (
+                <>
+                    <h1>😥 PUTZ</h1>
+                    <p>Ainda faltaram alguns... Mas não desanime!</p>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <h1> 🥳Parabéns!</h1>
+                    <p>Você não esqueceu de nenhum flashcard!</p>
+                </>
+            )
+        }
+    }
     return (
         <footer>
-            <p> {numAnsw}/{jsxDeck.length} CONCLUÍDOS</p>
+            {numAnsw === jsxDeck.length ? <CheckSuccess /> : <p> {numAnsw}/{jsxDeck.length} CONCLUÍDOS</p>}
             <div>
                 {answIcon}
             </div>
@@ -67,10 +92,10 @@ function Footer({numAnsw, answIcon}) {
     )
 }
 
-function RenderDeck({numAnsw, setNumAnsw, answIcon, setAnswIcon}) {
+function RenderDeck({ numAnsw, setNumAnsw, answIcon, setAnswIcon }) {
     const renderCard = jsxDeck.map((card, index) => {
         return (
-            <RenderCard key={card.question + index} index={index} question={card.question} answer={card.answer} numAnsw = {numAnsw} setNumAnsw = {setNumAnsw} answIcon = {answIcon} setAnswIcon = {setAnswIcon}/>
+            <RenderCard key={card.question + index} index={index} question={card.question} answer={card.answer} numAnsw={numAnsw} setNumAnsw={setNumAnsw} answIcon={answIcon} setAnswIcon={setAnswIcon} />
         )
     })
 
@@ -89,21 +114,21 @@ function RenderCard({ index, question, answer, numAnsw, setNumAnsw, answIcon, se
     function showFront(text, n) {
         setVisible(true);
         setRenderAnswer(false);
-        setNumAnsw(n+1)
+        setNumAnsw(n + 1)
         if (text === "forgot") {
-            answIcon = [...answIcon,  <ion-icon class = 'wrong-icon' name='close-circle' ></ion-icon>]
+            answIcon = [...answIcon, <ion-icon class='wrong-icon' name='close-circle' ></ion-icon>]
             setIconName('close-circle');
             setCssStyle('wrong');
             setIconCss('wrong-icon');
             setAnswIcon(answIcon);
         } else if (text === "almost-forgot") {
-            answIcon = [...answIcon, <ion-icon class = 'almost-icon' name='help-circle' ></ion-icon>]
+            answIcon = [...answIcon, <ion-icon class='almost-icon' name='help-circle' ></ion-icon>]
             setIconName('help-circle');
             setCssStyle('almost');
             setIconCss('almost-icon');
             setAnswIcon(answIcon);
         } else if (text === "remembered") {
-            answIcon = [...answIcon, <ion-icon class = 'right-icon' name='checkmark-circle' ></ion-icon>]
+            answIcon = [...answIcon, <ion-icon class='right-icon' name='checkmark-circle' ></ion-icon>]
             setIconName('checkmark-circle');
             setCssStyle('right');
             setIconCss('right-icon');
@@ -118,10 +143,10 @@ function RenderCard({ index, question, answer, numAnsw, setNumAnsw, answIcon, se
                 <ion-icon class={iconCss} name={iconName} ></ion-icon>
             </div >
         ) :
-        <div className={classQuestionCss}>
-            <p>{question}</p>
-            <ion-icon name="swap-horizontal-outline" onClick={() => { setRenderAnswer(true) }}></ion-icon>
-        </div>
+            <div className={classQuestionCss}>
+                <p>{question}</p>
+                <ion-icon name="swap-horizontal-outline" onClick={() => { setRenderAnswer(true); }}></ion-icon>
+            </div>
     }
 
     function RenderAnswer() {
@@ -141,7 +166,7 @@ function RenderCard({ index, question, answer, numAnsw, setNumAnsw, answIcon, se
 
     return (
         <section className={classCss} >
-            <RenderFrontBackCard cssStyle = {cssStyle} iconName={iconName} iconCss = {iconCss} />
+            <RenderFrontBackCard cssStyle={cssStyle} iconName={iconName} iconCss={iconCss} />
             <RenderAnswer />
         </section>
     )

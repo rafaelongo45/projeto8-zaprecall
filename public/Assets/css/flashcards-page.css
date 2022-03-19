@@ -44,7 +44,7 @@ main{
     width: 90%;
     font-family: 'Recursive', sans-serif;
     font-weight: 700;
-    margin-bottom: 14vh;
+    margin-bottom: 25vh;
 }
 
 .play-area .card{
@@ -184,24 +184,32 @@ footer{
     position:fixed;
     bottom:0;
     left:0;
-    height: 12vh;
+    height: fit-content;
+    min-height: 12vh;
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    font-family: 'Recursive', sans-serif;
+}
+
+footer h1{
+    font-weight: 700;
+    font-size: 22px;
+    margin: 10px 0;
 }
 
 footer p{
-    font-family: 'Recursive', sans-serif;
     font-size: 18px;
-    width: 100%;
+    width: 80%;
     text-align: center;
+    margin: 6px;
 }
 
 footer div{
-    font-family: 'Recursive', sans-serif;
     font-size: 25px;
-    width: 100%;
+    margin: 8px 0;
+    width: 50%;
     text-align: center;
 }
 
