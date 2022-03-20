@@ -45,7 +45,7 @@ main{
     width: 90%;
     font-family: 'Recursive', sans-serif;
     font-weight: 700;
-    margin-bottom: 25vh;
+    margin-bottom: 35vh;
 }
 
 .play-area .card{
@@ -216,6 +216,13 @@ footer div{
     text-align: center;
 }
 
+footer .answer-icons{
+    width:60%;
+    font-size: 25px;
+    margin: 8px 0;
+    text-align: center;
+}
+
 
 footer div .wrong-icon{
     color: var(--forgot-button);
@@ -232,7 +239,7 @@ footer div .right-icon{
 footer div .restart-game{
     font-family: 'Recursive', sans-serif;
     width: 55%;
-    height: 40px;
+    height: 56px;
     background-color: var(--restart-button-color);
     border:none;
     border-radius: 5px; 
@@ -245,7 +252,7 @@ footer div .restart-game{
     display:none !important; 
 }
 
-@media (min-width: 1000px){
+@media (min-width: 768px){
 
     header img{
         width: 65px;
@@ -257,6 +264,10 @@ footer div .restart-game{
 
     .play-area{
         width: 50%;
+    }
+
+    footer div .restart-game{
+        width: 30%;
     }
     
 }
