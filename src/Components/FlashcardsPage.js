@@ -8,6 +8,31 @@ import React from "react"
 
 let deck;
 
+let jsxDeck = [
+    { question: "O que é JSX?", answer: "Uma extensão de linguagem do JavaScript" },
+    { question: "O React é __", answer: "uma biblioteca JavaScript para construção de interfaces" },
+    { question: "Componentes devem iniciar com __ ", answer: "letra maiúscula" },
+    { question: "Podemos colocar __ dentro do JSX", answer: "expressões" },
+    { question: "O ReactDOM nos ajuda __ ", answer: "interagindo com a DOM para colocar componentes React na mesma" },
+    { question: "Usamos o npm para __ ", answer: "gerenciar os pacotes necessários e suas dependências" },
+    { question: "Usamos props para __ ", answer: "passar diferentes informações para componentes " },
+    { question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
+]
+
+let pkmnDeck = [
+    { question: "Quem criou Pokémon?", answer: "Satoshi Tajiri" },
+    { question: "Em que ano foi lançado o primeiro jogo?", answer: "1996" },
+    { question: "Em que ano estreou o anime?", answer: "1997" },
+    { question: "Qual pokémon usa o crânio da mãe como capacete?", answer: "Cubone" },
+    { question: "Hitmonlee foi inspirado em qual ator?", answer: "Bruce Lee" },
+    { question: "Quantas vezes o Brock abre os olhos no anime?", answer: "Três vezes" },
+    { question: "Qual foi o primeiro pokémon criado?", answer: "Rhydon" },
+    { question: "Quem é o criador de tudo?", answer: "Arceus" },
+]
+
+pkmnDeck = pkmnDeck.sort(comparador)
+jsxDeck = jsxDeck.sort(comparador)
+
 function FlashcardsPage({setVisible, inputValue, setInputValue, selectedDeck, setSelectedDeck}) {
     const [numAnsw, setNumAnsw] = React.useState(0);
     const [answIcon, setAnswIcon] = React.useState('');
@@ -23,34 +48,8 @@ function FlashcardsPage({setVisible, inputValue, setInputValue, selectedDeck, se
     )
 }
 
-let jsxDeck = [
-    { question: "O que é JSX?", answer: "Uma extensão de linguagem do JavaScript" },
-    { question: "O React é __", answer: "uma biblioteca JavaScript para construção de interfaces" },
-    { question: "Componentes devem iniciar com __ ", answer: "letra maiúscula" },
-    { question: "Podemos colocar __ dentro do JSX", answer: "expressões" },
-    { question: "O ReactDOM nos ajuda __ ", answer: "interagindo com a DOM para colocar componentes React na mesma" },
-    { question: "Usamos o npm para __ ", answer: "gerenciar os pacotes necessários e suas dependências" },
-    { question: "Usamos props para __ ", answer: "passar diferentes informações para componentes " },
-    { question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
-]
-
-let pkmnDeck = [
-    { question: "Qual a evolução do pikachu?", answer: "Raichu" },
-    { question: "Qual a evolução do ghastly?", answer: "haunter" },
-    { question: "Qual a evolução do ratata?", answer: "raticate" },
-    { question: "Qual pkmn criou o universo", answer: "Arceus" },
-    { question: "Qual o nome do protagonista", answer: "Ash" },
-    { question: "Qual o nome do prof que da pkmn", answer: "dr oak" },
-    { question: "Qual a evolução do pikachu?", answer: "Uma extensão de linguagem do JavaScript" },
-    { question: "Qual a evolução do pikachu?", answer: "Uma extensão de linguagem do react" },
-]
-
 function comparador() {
     return Math.random() - 0.5;
 }
-
-pkmnDeck = pkmnDeck.sort(comparador)
-jsxDeck = jsxDeck.sort(comparador)
-
 
 export default FlashcardsPage;

@@ -2,6 +2,13 @@ import RenderButton from "./RenderButton";
 
 import React from 'react';
 
+const buttons = [
+    { className: "forgot", text: "Não lembrei" },
+    { className: "almost-forgot", text: "Quase não lembrei" },
+    { className: "remembered", text: "Zap!" }
+]
+
+
 function RenderCard({ index, question, answer, numAnsw, setNumAnsw, answIcon, setAnswIcon }) {
     const [visible, setVisible] = React.useState(true);
     const [renderAnswer, setRenderAnswer] = React.useState(false);
@@ -73,12 +80,5 @@ function RenderCard({ index, question, answer, numAnsw, setNumAnsw, answIcon, se
         </section>
     )
 }
-
-const buttons = [
-    { className: "forgot", text: "Não lembrei" },
-    { className: "almost-forgot", text: "Quase não lembrei" },
-    { className: "remembered", text: "Zap!" }
-]
-
 
 export default RenderCard;

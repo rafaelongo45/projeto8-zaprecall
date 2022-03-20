@@ -36,7 +36,7 @@ body{
     font-size: 40px;
     font-family: 'Righteous', cursive;
     color: var(--font-title-color);
-    margin-bottom: 65px;
+    margin-bottom: 40px;
 }
 
 .welcome-page input{
@@ -47,7 +47,7 @@ body{
     border-radius: 5px; 
     font-size: 16px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 
 .welcome-page select{
@@ -60,7 +60,7 @@ body{
     background-color: var(--button-color);
     color: var(--select-font-color);
     border:none;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .welcome-page button{

@@ -45,12 +45,12 @@ function RenderFirstPage({ setVisible, setInputValue, inputValue, setSelectedDec
                 <img src={logo} alt="Page logo"></img>
                 <h1>ZapRecall</h1>
             </section>
-            <input placeholder="Qual sua meta de ZAP?" onKeyDown={(pressedKey) => { handleKeyPress(pressedKey) }} onChange={(click) => { setInputValue(click.target.value) }}></input>
-            <select name="decks" onChange={handleValue}>
-                <option disabled selected >Escolha seu deck</option>
+            <select name="decks" defaultValue = "" onChange={handleValue}>
+                <option disabled value = "" >Escolha seu deck</option>
                 <option value = "jsx">JSX</option>
                 <option value = "pkmn">Pokémon</option>
             </select>
+            <input placeholder="Qual sua meta de ZAP?" onKeyDown={(pressedKey) => { handleKeyPress(pressedKey) }} onChange={(click) => { setInputValue(click.target.value) }}></input>
 
             <button type ="submit" className="start-quizz" onClick={checkInput}>Iniciar Recall!</button>
         </main>

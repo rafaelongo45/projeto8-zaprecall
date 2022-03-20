@@ -2,12 +2,11 @@ function CheckSuccess({icon, inputValue}) {
     let success = false;
     let numZap = 0;
     let numWrong = 0;
+    
     for (let i = 0; i < icon.length; i++) {
         if (icon[i].props.class === 'right-icon') {
             numZap++
-        }
-
-        if (icon[i].props.class === 'wrong-icon') {
+        }else if (icon[i].props.class === 'wrong-icon') {
             numWrong++
         }
     }
