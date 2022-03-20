@@ -17,7 +17,7 @@ function CheckSuccess({icon, inputValue}) {
     }
     
     return (success === false ? 
-        <RenderResult title = "😥 PUTZ" text = "Ainda faltaram alguns ou você errou um card... Mas não desanime!"/> 
+        <RenderResult title = "😥 PUTZ" text = "Ainda faltaram alguns ou você não atingiu a meta... Mas não desanime!"/> 
         : 
         <RenderResult title = "🥳Parabéns!" text = "Você não esqueceu de nenhum flashcard!"/>
     )

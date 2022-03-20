@@ -266,6 +266,10 @@ footer div .restart-game{
         width: 50%;
     }
 
+    footer p {
+        width:65%;
+    }
+
     footer div .restart-game{
         width: 30%;
     }

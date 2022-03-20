@@ -1,6 +1,6 @@
 import CheckSuccess from "./CheckSuccess";
 
-function Footer({ numAnsw, answIcon, deck, setVisible, inputValue, setInputValue}) {
+function Footer({ numAnsw, answIcon, deck, setVisible, inputValue, setInputValue, setSelectedDeck}) {
     return (
         <footer>
             {}
@@ -10,17 +10,17 @@ function Footer({ numAnsw, answIcon, deck, setVisible, inputValue, setInputValue
             </div>
 
             <div>
-            {numAnsw === deck.length ? <RenderRestartButton setVisible = {setVisible} setInputValue = {setInputValue}/> : ""} 
+            {numAnsw === deck.length ? <RenderRestartButton setVisible = {setVisible} setInputValue = {setInputValue} setSelectedDeck={setSelectedDeck} /> : ""} 
             </div>
             
         </footer>
     )
 }
 
-function RenderRestartButton({setVisible,setInputValue}){
+function RenderRestartButton({setVisible,setInputValue, setSelectedDeck}){
     return (
         <>
-            <button className = "restart-game" onClick = {()=>{setVisible(true); setInputValue(0)}}>Reiniciar Recall</button>
+            <button className = "restart-game" onClick = {()=>{setVisible(true); setInputValue(0); setSelectedDeck("")}}>Reiniciar Recall</button>
         </>
     )
 }

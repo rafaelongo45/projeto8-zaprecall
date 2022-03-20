@@ -6,22 +6,24 @@ import logoPequeno from '../img/logo-pequeno.png'
 
 import React from "react"
 
-function FlashcardsPage({setVisible, inputValue, setInputValue}) {
+let deck;
+
+function FlashcardsPage({setVisible, inputValue, setInputValue, selectedDeck, setSelectedDeck}) {
     const [numAnsw, setNumAnsw] = React.useState(0);
     const [answIcon, setAnswIcon] = React.useState('');
-
-    console.log(inputValue)
-
+    
+    selectedDeck === "pkmn" ? deck = pkmnDeck : deck = jsxDeck;
+    
     return (
         <>
             <Header text="ZapRecall" src={logoPequeno} />
-            <Main numAnsw={numAnsw} setNumAnsw={setNumAnsw} answIcon={answIcon} setAnswIcon={setAnswIcon} deck = {deck}/>
-            <Footer numAnsw={numAnsw} answIcon={answIcon} deck = {deck} setVisible = {setVisible} inputValue = {inputValue} setInputValue = {setInputValue}/>
+            <Main numAnsw={numAnsw} setNumAnsw={setNumAnsw} answIcon={answIcon} setAnswIcon={setAnswIcon} deck = {deck} />
+            <Footer numAnsw={numAnsw} answIcon={answIcon} deck = {deck} setVisible = {setVisible} inputValue = {inputValue} setInputValue = {setInputValue} setSelectedDeck={setSelectedDeck} />
         </>
     )
 }
 
-const jsxDeck = [
+let jsxDeck = [
     { question: "O que é JSX?", answer: "Uma extensão de linguagem do JavaScript" },
     { question: "O React é __", answer: "uma biblioteca JavaScript para construção de interfaces" },
     { question: "Componentes devem iniciar com __ ", answer: "letra maiúscula" },
@@ -32,10 +34,23 @@ const jsxDeck = [
     { question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
 ]
 
+let pkmnDeck = [
+    { question: "Qual a evolução do pikachu?", answer: "Raichu" },
+    { question: "Qual a evolução do ghastly?", answer: "haunter" },
+    { question: "Qual a evolução do ratata?", answer: "raticate" },
+    { question: "Qual pkmn criou o universo", answer: "Arceus" },
+    { question: "Qual o nome do protagonista", answer: "Ash" },
+    { question: "Qual o nome do prof que da pkmn", answer: "dr oak" },
+    { question: "Qual a evolução do pikachu?", answer: "Uma extensão de linguagem do JavaScript" },
+    { question: "Qual a evolução do pikachu?", answer: "Uma extensão de linguagem do react" },
+]
+
 function comparador() {
     return Math.random() - 0.5;
 }
 
-const deck = jsxDeck.sort(comparador);
+pkmnDeck = pkmnDeck.sort(comparador)
+jsxDeck = jsxDeck.sort(comparador)
+
 
 export default FlashcardsPage;
