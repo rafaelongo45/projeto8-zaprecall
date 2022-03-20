@@ -6,7 +6,7 @@ import logoPequeno from '../img/logo-pequeno.png'
 
 import React from "react"
 
-function FlashcardsPage() {
+function FlashcardsPage({setVisible}) {
     const [numAnsw, setNumAnsw] = React.useState(0);
     const [answIcon, setAnswIcon] = React.useState('');
 
@@ -14,7 +14,7 @@ function FlashcardsPage() {
         <>
             <Header text="ZapRecall" src={logoPequeno} />
             <Main numAnsw={numAnsw} setNumAnsw={setNumAnsw} answIcon={answIcon} setAnswIcon={setAnswIcon} deck = {deck}/>
-            <Footer numAnsw={numAnsw} answIcon={answIcon} deck = {deck}/>
+            <Footer numAnsw={numAnsw} answIcon={answIcon} deck = {deck} setVisible = {setVisible}/>
         </>
     )
 }

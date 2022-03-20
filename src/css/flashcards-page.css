@@ -7,6 +7,7 @@
     --forgot-button: rgba(255, 48, 48, 1);
     --almost-forgot-button: rgba(255, 146, 46, 1);
     --remembered-button: rgba(47, 190, 52, 1);
+    --restart-button-color: rgba(251, 107, 107, 1);
 }   
 
 header{
@@ -226,6 +227,18 @@ footer div .almost-icon{
 
 footer div .right-icon{
     color: var(--remembered-button);
+}
+
+footer div .restart-game{
+    font-family: 'Recursive', sans-serif;
+    width: 55%;
+    height: 40px;
+    background-color: var(--restart-button-color);
+    border:none;
+    border-radius: 5px; 
+    font-size: 23px;
+    color: var(--page-title-color);
+    margin: 12px 0;
 }
 
 .hidden{

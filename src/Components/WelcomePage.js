@@ -12,7 +12,7 @@ function WelcomePage() {
            <RenderFirstPage setVisible = {setVisible}/>
         )
     } else {
-        return <FlashcardsPage />
+        return <FlashcardsPage setVisible = {setVisible}/>
     }
 
 }
